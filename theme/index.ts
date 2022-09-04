@@ -1,6 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 import colors from "./colors";
-
+import typography from "./typography";
 export const breakpoints = {
   sm: "650px",
   md: "769px",
@@ -11,6 +11,7 @@ export const breakpoints = {
 
 const theme = {
   colors,
+  ...typography,
   breakpoints,
 };
 

@@ -1,11 +1,20 @@
 import { ComponentWithAs, Flex, FlexProps } from "@chakra-ui/react";
 import React from "react";
+import { Footer } from "./footer";
+import { Header } from "./header";
 
 interface PropsPage {
   children?: React.ReactNode;
   props?: ComponentWithAs<"div", FlexProps>;
+  hasHeader?: boolean;
+  hasFooter?: boolean;
 }
-export const Page: React.FC<PropsPage> = ({ children, ...props }) => {
+export const Page: React.FC<PropsPage> = ({
+  children,
+  hasHeader = true,
+  hasFooter = true,
+  ...props
+}) => {
   return (
     <div style={{ minHeight: "100vh", overflowY: "scroll" }}>
       <Flex
@@ -15,9 +24,9 @@ export const Page: React.FC<PropsPage> = ({ children, ...props }) => {
         flexDirection="column"
         {...props}
       >
-        {/* {hasHeader ? <Header withMenu={withMenu} /> : null} */}
+        {hasHeader ? <Header /> : null}
         <main>{children}</main>
-        {/* {hasFooter ? <Footer hasSignUp={hasSignUp} /> : null} */}
+        {hasFooter ? <Footer /> : null}
       </Flex>
     </div>
   );
